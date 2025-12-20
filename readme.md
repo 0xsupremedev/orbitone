@@ -16,6 +16,9 @@
 ---
 
 ## 📖 About
+<img width="1686" height="954" alt="image" src="https://github.com/user-attachments/assets/6648643c-6c2d-47c5-98e7-3cf609d725aa" />
+<img width="1617" height="959" alt="image" src="https://github.com/user-attachments/assets/84f16203-4b54-47ae-9501-08baf1923a75" />
+
 
 **Orbit One** is an immersive 3D space defense game where players orbit around a star, defending it from incoming asteroids, aliens, and space dragons. Built with modern web technologies, it features stunning neon-cyberpunk aesthetics, real-time 3D graphics, and Web3 wallet integration.
 
@@ -255,4 +258,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
   <b>⭐ Star this repo if you like it! ⭐</b>
   
   Made with 💜 using Svelte, Three.js, and Web3
+
 </div>
