@@ -19,7 +19,7 @@
 </script>
 
 <div class="screen">
-    <h1 class="glow-text title danger">MISSION ENDED</h1>
+    <img src="/mission-ended.png" alt="Mission Ended" class="mission-ended-img" />
     
     <div class="results-panel glass-panel">
         <div class="stat-row">
@@ -55,9 +55,18 @@
         padding: 40px;
     }
 
-    .title.danger {
-        color: var(--fiery-red);
-        text-shadow: 0 0 15px var(--fiery-orange);
+    .mission-ended-img {
+        max-width: 500px;
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 0 20px var(--fiery-orange));
+        animation: pulse-title 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-title {
+        0% { filter: drop-shadow(0 0 10px var(--fiery-orange)); transform: scale(1); }
+        50% { filter: drop-shadow(0 0 30px var(--fiery-red)); transform: scale(1.02); }
+        100% { filter: drop-shadow(0 0 10px var(--fiery-orange)); transform: scale(1); }
     }
 
     .results-panel {

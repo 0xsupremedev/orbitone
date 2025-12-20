@@ -147,6 +147,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="modal-overlay" on:click={onClose}>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div class="modal-content glass-panel" on:click|stopPropagation on:keydown|stopPropagation role="dialog" aria-modal="true">
         <button class="close-btn" on:click={onClose}>✕</button>
