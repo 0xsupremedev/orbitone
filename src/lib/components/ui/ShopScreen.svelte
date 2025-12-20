@@ -49,7 +49,7 @@
         <button class="back-btn" on:click={goBack}>
             <img src="/left arrow.png" alt="Back" />
         </button>
-        <h2 class="glow-text">SHOP</h2>
+        <img src="/shop.png" alt="Shop" class="header-title-img" />
         <div class="currency-display">
             <span class="coins"><img src="/coins for shop.png" alt="Coins" /> {$gameStore.coins}</span>
             <span class="gems"><img src="/Gems.png" alt="Gems" /> {$gameStore.gems}</span>
@@ -243,5 +243,11 @@
     button:disabled {
         opacity: 0.5;
         cursor: not-allowed;
+    }
+
+    .header-title-img {
+        height: 40px;
+        width: auto;
+        filter: drop-shadow(0 0 10px var(--neon-cyan));
     }
 </style>

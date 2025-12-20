@@ -41,7 +41,6 @@ declare module '$env/static/private' {
 	export const CommonProgramW6432: string;
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
-	export const DEBUG: string;
 	export const DISABLE_RATE_LIMIT: string;
 	export const DriverData: string;
 	export const EDITOR: string;
@@ -174,7 +173,6 @@ declare module '$env/dynamic/private' {
 		CommonProgramW6432: string;
 		COMPUTERNAME: string;
 		ComSpec: string;
-		DEBUG: string;
 		DISABLE_RATE_LIMIT: string;
 		DriverData: string;
 		EDITOR: string;

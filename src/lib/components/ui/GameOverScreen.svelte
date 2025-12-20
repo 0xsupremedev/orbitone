@@ -37,9 +37,15 @@
     </div>
     
     <div class="actions">
-        <button class="neon-button pulse" on:click={retry}>🔄 RETRY MISSION</button>
-        <button class="neon-button secondary" on:click={goToUpgrades}>⚡ UPGRADES</button>
-        <button class="neon-button secondary" on:click={goToMenu}>🏠 MAIN MENU</button>
+        <button class="neon-button pulse img-btn" on:click={retry}>
+            <img src="/retry-mission.png" alt="Retry Mission" class="btn-img" />
+        </button>
+        <button class="neon-button secondary img-btn" on:click={goToUpgrades}>
+            <img src="/upgrades.png" alt="Upgrades" class="btn-img" />
+        </button>
+        <button class="neon-button secondary img-btn" on:click={goToMenu}>
+            <img src="/main-menu.png" alt="Main Menu" class="btn-img" />
+        </button>
     </div>
 </div>
 
@@ -102,5 +108,19 @@
         0% { filter: drop-shadow(0 0 2px var(--neon-cyan)); transform: scale(1); }
         50% { filter: drop-shadow(0 0 15px var(--neon-cyan)); transform: scale(1.02); }
         100% { filter: drop-shadow(0 0 2px var(--neon-cyan)); transform: scale(1); }
+    }
+
+    .img-btn {
+        padding: 10px 20px;
+    }
+
+    .btn-img {
+        height: 24px;
+        width: auto;
+        filter: brightness(1.1);
+    }
+
+    .img-btn:hover .btn-img {
+        filter: brightness(1.3);
     }
 </style>

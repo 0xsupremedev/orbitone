@@ -63,7 +63,7 @@
 
     <div class="login-panel glass-panel">
         <div class="input-group">
-            <label for="player-name">ENTER PLAYER NAME</label>
+            <label for="player-name"><img src="/enter-player.png" alt="Enter Player Name" class="label-img" /></label>
             <input 
                 type="text" 
                 id="player-name" 
@@ -74,15 +74,18 @@
         </div>
         
         <div class="button-group">
-            <button class="neon-button">
-                ✉️ LOGIN WITH EMAIL
+            <button class="neon-button img-btn">
+                <img src="/login-email.png" alt="Login with Email" class="btn-img" />
             </button>
-            <button class="neon-button metamask-btn" on:click={handleMetaMaskLogin} disabled={isConnecting}>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" alt="MetaMask" class="metamask-icon" />
-                {isConnecting ? 'CONNECTING...' : 'LOGIN WITH METAMASK'}
+            <button class="neon-button img-btn metamask-btn" on:click={handleMetaMaskLogin} disabled={isConnecting}>
+                {#if isConnecting}
+                    <span>CONNECTING...</span>
+                {:else}
+                    <img src="/login-metamask.png" alt="Login with MetaMask" class="btn-img" />
+                {/if}
             </button>
-            <button class="neon-button secondary" on:click={handleGuestLogin}>
-                👤 GUEST LOGIN
+            <button class="neon-button secondary img-btn" on:click={handleGuestLogin}>
+                <img src="/guest-login.png" alt="Guest Login" class="btn-img" />
             </button>
         </div>
         
@@ -259,5 +262,24 @@
         padding: 8px 15px;
         border-radius: 5px;
         border: 1px solid #ff4444;
+    }
+
+    .label-img {
+        height: 20px;
+        width: auto;
+    }
+
+    .img-btn {
+        padding: 8px 16px;
+    }
+
+    .btn-img {
+        height: 24px;
+        width: auto;
+        filter: brightness(1.1);
+    }
+
+    .img-btn:hover .btn-img {
+        filter: brightness(1.3);
     }
 </style>

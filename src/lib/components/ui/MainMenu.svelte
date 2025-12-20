@@ -47,7 +47,7 @@
         <button class="back-btn" on:click={goToLogin}>
             <img src="/left arrow.png" alt="Back" />
         </button>
-        <h2 class="glow-text">CHOOSE MODE</h2>
+        <img src="/choose-mode.png" alt="Choose Mode" class="header-title-img" />
         <div class="header-icons">
             <button class="header-icon-btn leaderboard-btn" on:click={goToLeaderboard}>
                 <img src="/leaderboard cup.png" alt="Leaderboard" />
@@ -263,5 +263,11 @@
         border-radius: 50%;
         border: 2px solid var(--neon-cyan);
         box-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    .header-title-img {
+        height: 40px;
+        width: auto;
+        filter: drop-shadow(0 0 10px var(--neon-cyan));
     }
 </style>
