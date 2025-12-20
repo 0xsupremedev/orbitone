@@ -4,6 +4,11 @@
     let playerName = '';
     let isConnecting = false;
     let connectionError = '';
+    let showInput = false;
+    
+    function toggleInput() {
+        showInput = true;
+    }
     
     function handleGuestLogin() {
         gameStore.setPlayerName(playerName || 'GUEST_PILOT');
@@ -63,28 +68,34 @@
 
     <div class="login-panel glass-panel">
         <div class="input-group">
-            <label for="player-name"><img src="/enter-player.png" alt="Enter Player Name" class="label-img" /></label>
-            <input 
-                type="text" 
-                id="player-name" 
-                bind:value={playerName}
-                placeholder="COMMANDER NAME..." 
-                maxlength="15"
-            >
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <div class="label-clickable" on:click={toggleInput}>
+                <img src="/enter-player.png" alt="Enter Player Name" class="label-img" />
+            </div>
+            {#if showInput}
+                <input 
+                    type="text" 
+                    id="player-name" 
+                    bind:value={playerName}
+                    placeholder="COMMANDER NAME..." 
+                    maxlength="15"
+                >
+            {/if}
         </div>
         
         <div class="button-group">
-            <button class="neon-button img-btn">
+            <button class="img-btn">
                 <img src="/login-email.png" alt="Login with Email" class="btn-img" />
             </button>
-            <button class="neon-button img-btn metamask-btn" on:click={handleMetaMaskLogin} disabled={isConnecting}>
+            <button class="img-btn" on:click={handleMetaMaskLogin} disabled={isConnecting}>
                 {#if isConnecting}
-                    <span>CONNECTING...</span>
+                    <span class="connecting-text">CONNECTING...</span>
                 {:else}
                     <img src="/login-metamask.png" alt="Login with MetaMask" class="btn-img" />
                 {/if}
             </button>
-            <button class="neon-button secondary img-btn" on:click={handleGuestLogin}>
+            <button class="img-btn" on:click={handleGuestLogin}>
                 <img src="/guest-login.png" alt="Guest Login" class="btn-img" />
             </button>
         </div>
@@ -175,7 +186,8 @@
     .input-group {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 12px;
+        align-items: center;
     }
 
     .input-group label {
@@ -265,21 +277,52 @@
     }
 
     .label-img {
-        height: 20px;
+        height: 70px;
         width: auto;
+    }
+
+    .label-clickable {
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .label-clickable:hover {
+        transform: scale(1.05);
     }
 
     .img-btn {
-        padding: 8px 16px;
+        padding: 0;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        display: block;
+        width: 100%;
+    }
+
+    .img-btn:hover {
+        background: transparent;
+    }
+
+    .img-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
     }
 
     .btn-img {
-        height: 24px;
-        width: auto;
-        filter: brightness(1.1);
+        width: 100%;
+        height: auto;
+        max-height: 60px;
+        object-fit: contain;
     }
 
     .img-btn:hover .btn-img {
-        filter: brightness(1.3);
+        filter: brightness(1.2);
+        transform: scale(1.02);
+    }
+
+    .connecting-text {
+        color: var(--neon-cyan);
+        font-size: 1rem;
+        font-weight: 700;
     }
 </style>

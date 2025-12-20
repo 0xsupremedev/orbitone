@@ -20,50 +20,50 @@
         <button class="back-btn" on:click={goBack}>
             <img src="/left arrow.png" alt="Back" />
         </button>
-        <h2 class="glow-text">UPGRADES</h2>
+        <img src="/upgrades.png" alt="Upgrades" class="header-title-img" />
         <div style="width: 50px;"></div>
     </div>
     
     <div class="upgrade-grid">
         <div class="upgrade-card glass-panel">
             <h3>LASER DAMAGE</h3>
-            <div class="upgrade-icon">⚡</div>
+            <div class="upgrade-icon"><img src="/lazer-damage.png" alt="Laser" /></div>
             <p class="stat-val">{$gameStore.upgrades.laserDamage} / S</p>
             <button class="neon-button cost-btn" on:click={() => buyUpgrade('laserDamage')}>
-                💰 100
+                                <img src="/coins for shop.png" alt="coins" class="coin-icon" /> 100
             </button>
         </div>
         
         <div class="upgrade-card glass-panel">
             <h3>FIRE RATE</h3>
-            <div class="upgrade-icon">🔥</div>
+            <div class="upgrade-icon"><img src="/fire-rate.png" alt="Fire" /></div>
             <p class="stat-val">{$gameStore.upgrades.fireRate} / S</p>
             <button class="neon-button cost-btn" on:click={() => buyUpgrade('fireRate')}>
-                💰 100
+                                <img src="/coins for shop.png" alt="coins" class="coin-icon" /> 100
             </button>
         </div>
         
         <div class="upgrade-card glass-panel">
             <h3>HULL INTEGRITY</h3>
-            <div class="upgrade-icon">🛡️</div>
+            <div class="upgrade-icon"><img src="/hull-integrity.png" alt="Hull" /></div>
             <p class="stat-val">{$gameStore.upgrades.hullIntegrity} PT</p>
             <button class="neon-button cost-btn" on:click={() => buyUpgrade('hullIntegrity')}>
-                💰 100
+                                <img src="/coins for shop.png" alt="coins" class="coin-icon" /> 100
             </button>
         </div>
         
         <div class="upgrade-card glass-panel">
             <h3>ORBIT CONTROL</h3>
-            <div class="upgrade-icon">🔄</div>
+            <div class="upgrade-icon"><img src="/orbit.png" alt="Orbit" /></div>
             <p class="stat-val">LVL {$gameStore.upgrades.orbitControl}</p>
             <button class="neon-button cost-btn" on:click={() => buyUpgrade('orbitControl')}>
-                💰 100
+                                <img src="/coins for shop.png" alt="coins" class="coin-icon" /> 100
             </button>
         </div>
     </div>
 
     <div class="footer-stats">
-        <p class="glow-text credits-display">💰 CREDITS: {$gameStore.credits}</p>
+        <p class="glow-text credits-display"><img src="/coins for shop.png" alt="coins" class="coin-icon" /> CREDITS: {$gameStore.credits}</p>
         <button class="neon-button start-btn" on:click={startMission}>START MISSION</button>
     </div>
 </div>
@@ -115,15 +115,17 @@
     }
 
     .upgrade-icon {
-        width: 60px;
-        height: 60px;
-        border: 1px solid var(--neon-cyan);
-        border-radius: 8px;
+        width: 80px;
+        height: 80px;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 2rem;
-        background: rgba(0, 242, 255, 0.05);
+    }
+
+    .upgrade-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
 
     .stat-val {
@@ -149,5 +151,18 @@
     .start-btn {
         padding: 15px 40px;
         font-size: 1rem;
+    }
+
+    .header-title-img {
+        height: 60px;
+        width: auto;
+        filter: drop-shadow(0 0 15px var(--neon-cyan));
+    }
+
+    .coin-icon {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        vertical-align: middle;
     }
 </style>

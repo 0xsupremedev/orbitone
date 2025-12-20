@@ -246,8 +246,8 @@
     }
 
     .header-title-img {
-        height: 40px;
+        height: 60px;
         width: auto;
-        filter: drop-shadow(0 0 10px var(--neon-cyan));
+        filter: drop-shadow(0 0 15px var(--neon-cyan));
     }
 </style>

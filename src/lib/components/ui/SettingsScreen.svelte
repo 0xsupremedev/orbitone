@@ -66,7 +66,7 @@
     </div>
 
     <div class="footer-stats">
-        <p class="glow-text">💰 CREDITS: {$gameStore.credits}</p>
+        <p class="glow-text"><img src="/coins for shop.png" alt="coins" class="coin-icon" /> CREDITS: {$gameStore.credits}</p>
     </div>
 </div>
 
@@ -179,5 +179,12 @@
         position: absolute;
         bottom: 40px;
         font-size: 1.2rem;
+    }
+
+    .coin-icon {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+        vertical-align: middle;
     }
 </style>

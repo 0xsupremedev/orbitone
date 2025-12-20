@@ -63,21 +63,18 @@
     
     <div class="mode-selection">
         <button type="button" class="mode-card glass-panel">
-            <div class="mode-icon">🪐</div>
-            <h3>CAMPAIGN</h3>
-            <p>STORY MISSIONS</p>
+            <img src="/campaigns.png" alt="Campaign" class="mode-img" />
+            <span class="mode-label">CAMPAIGN</span>
         </button>
         
         <button type="button" class="mode-card glass-panel highlighted" on:click={goToUpgrades}>
-            <div class="mode-icon">∞</div>
-            <h3>ENDLESS RUN</h3>
-            <p>SURVIVE THE SWARM</p>
+            <img src="/endless-run.png" alt="Endless Run" class="mode-img" />
+            <span class="mode-label">ENDLESS RUN</span>
         </button>
         
         <button type="button" class="mode-card glass-panel">
-            <div class="mode-icon">📅</div>
-            <h3>DAILY</h3>
-            <p>SPECIAL CHALLENGE</p>
+            <img src="/daily.png" alt="Daily" class="mode-img" />
+            <span class="mode-label">DAILY</span>
         </button>
     </div>
 
@@ -125,16 +122,16 @@
     }
 
     .mode-card {
-        width: 280px;
-        height: 360px;
+        width: 180px;
+        height: 220px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 20px;
-        text-align: center;
+        gap: 15px;
         cursor: pointer;
         transition: all 0.3s;
+        padding: 20px;
     }
 
     .mode-card:hover {
@@ -148,26 +145,23 @@
         box-shadow: 0 0 20px var(--neon-cyan);
     }
 
-    .mode-icon {
-        width: 80px;
-        height: 80px;
-        border: 2px solid var(--neon-cyan);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2.5rem;
+    .mode-img {
+        width: 140px;
+        height: 140px;
+        object-fit: contain;
     }
 
-    .mode-card h3 {
-        font-size: 1.2rem;
+    .mode-label {
+        font-size: 0.9rem;
+        font-weight: 700;
         color: var(--neon-cyan);
+        text-shadow: 0 0 10px var(--neon-cyan);
+        letter-spacing: 1px;
     }
 
-    .mode-card p {
-        font-size: 0.7rem;
-        opacity: 0.7;
-        letter-spacing: 1px;
+    .mode-card:hover .mode-img {
+        filter: brightness(1.2);
+        transform: scale(1.05);
     }
 
     .footer-stats {
@@ -266,8 +260,8 @@
     }
 
     .header-title-img {
-        height: 40px;
+        height: 60px;
         width: auto;
-        filter: drop-shadow(0 0 10px var(--neon-cyan));
+        filter: drop-shadow(0 0 15px var(--neon-cyan));
     }
 </style>

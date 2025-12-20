@@ -22,7 +22,7 @@
         </div>
         <div class="stat">
             <span class="label">CREDITS</span>
-            <span class="value">💰 {$gameStore.credits}</span>
+            <span class="value"><img src="/coins for shop.png" alt="coins" class="coin-icon" /> {$gameStore.credits}</span>
         </div>
         <div class="health-bar">
             <span class="label">STAR HEALTH</span>
@@ -109,5 +109,12 @@
         width: 24px;
         height: 24px;
         object-fit: contain;
+    }
+
+    .coin-icon {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        vertical-align: middle;
     }
 </style>

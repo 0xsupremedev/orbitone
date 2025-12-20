@@ -31,19 +31,19 @@
             <span class="glow-text">{distance} LY</span>
         </div>
         <div class="stat-row credits-row">
-            <span>💰 CREDITS EARNED</span>
+            <span><img src="/coins for shop.png" alt="coins" class="coin-icon" /> CREDITS EARNED</span>
             <span class="glow-text">+{creditsEarned}</span>
         </div>
     </div>
     
     <div class="actions">
-        <button class="neon-button pulse img-btn" on:click={retry}>
+        <button class="img-btn" on:click={retry}>
             <img src="/retry-mission.png" alt="Retry Mission" class="btn-img" />
         </button>
-        <button class="neon-button secondary img-btn" on:click={goToUpgrades}>
+        <button class="img-btn" on:click={goToUpgrades}>
             <img src="/upgrades.png" alt="Upgrades" class="btn-img" />
         </button>
-        <button class="neon-button secondary img-btn" on:click={goToMenu}>
+        <button class="img-btn" on:click={goToMenu}>
             <img src="/main-menu.png" alt="Main Menu" class="btn-img" />
         </button>
     </div>
@@ -111,16 +111,31 @@
     }
 
     .img-btn {
-        padding: 10px 20px;
+        padding: 0;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .img-btn:hover {
+        background: transparent;
     }
 
     .btn-img {
-        height: 24px;
+        height: 50px;
         width: auto;
-        filter: brightness(1.1);
+        object-fit: contain;
     }
 
     .img-btn:hover .btn-img {
-        filter: brightness(1.3);
+        filter: brightness(1.2);
+        transform: scale(1.05);
+    }
+
+    .coin-icon {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        vertical-align: middle;
     }
 </style>
