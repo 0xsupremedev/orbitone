@@ -25,7 +25,7 @@
             <span class="value"><img src="/coins for shop.png" alt="coins" class="coin-icon" /> {$gameStore.credits}</span>
         </div>
         <div class="health-bar">
-            <span class="label">STAR HEALTH</span>
+            <span class="label"><img src="/health heart button.png" alt="heart" class="health-icon" /> STAR HEALTH</span>
             <div class="bar-container">
                 <div 
                     class="bar-fill" 
@@ -112,6 +112,13 @@
     }
 
     .coin-icon {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        vertical-align: middle;
+    }
+
+    .health-icon {
         width: 20px;
         height: 20px;
         object-fit: contain;
