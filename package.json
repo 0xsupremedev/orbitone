@@ -23,6 +23,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@sveltejs/adapter-vercel": "^6.2.0",
     "@threlte/gltf": "^2.0.0",
     "chart.js": "^4.5.1"
   }
