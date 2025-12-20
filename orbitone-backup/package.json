@@ -1,0 +1,16 @@
+{
+  "name": "orbitone",
+  "version": "1.0.0",
+  "description": "You said:\r Uploaded image\r Uploaded image\r Uploaded image\r write a detailed describe these images in detail \r ChatGPT said:\r Below is a detailed, screen-by-screen visual and UI description of the three images from the game “ORBIT ONE”, focusing on layout, aesthetics, UX intent, and implied gameplay systems.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "vite": "^7.3.0"
+  }
+}
