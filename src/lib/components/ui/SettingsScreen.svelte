@@ -1,5 +1,12 @@
 <script>
     import { gameStore } from '$lib/stores/gameStore.js';
+    import FaMusic from 'svelte-icons/fa/FaMusic.svelte';
+    import FaVolumeUp from 'svelte-icons/fa/FaVolumeUp.svelte';
+    import FaSyncAlt from 'svelte-icons/fa/FaSyncAlt.svelte';
+    import FaGlobe from 'svelte-icons/fa/FaGlobe.svelte';
+    import FaStar from 'svelte-icons/fa/FaStar.svelte';
+    import FaUser from 'svelte-icons/fa/FaUser.svelte';
+    import FaLink from 'svelte-icons/fa/FaLink.svelte';
     
     function goBack() {
         gameStore.setScreen('main-menu');
@@ -18,7 +25,7 @@
     <div class="settings-grid">
         <div class="settings-col">
             <div class="setting-item">
-                <label for="music-volume">🎵 MUSIC VOLUME</label>
+                <label for="music-volume"><span class="icon"><FaMusic /></span> MUSIC VOLUME</label>
                 <input 
                     type="range" 
                     id="music-volume"
@@ -29,11 +36,11 @@
                 >
             </div>
             <div class="setting-item">
-                <span class="setting-label">🔄 INVERT ORBIT</span>
+                <span class="setting-label"><span class="icon"><FaSyncAlt /></span> INVERT ORBIT</span>
                 <button type="button" class="toggle" class:on={$gameStore.settings.invertOrbit} aria-pressed={$gameStore.settings.invertOrbit}></button>
             </div>
             <div class="setting-item">
-                <label for="language-select">🌍 LANGUAGE</label>
+                <label for="language-select"><span class="icon"><FaGlobe /></span> LANGUAGE</label>
                 <select id="language-select" class="neon-select">
                     <option selected={$gameStore.settings.language === 'ENGLISH'}>ENGLISH</option>
                     <option selected={$gameStore.settings.language === 'SPANISH'}>SPANISH</option>
@@ -44,7 +51,7 @@
         
         <div class="settings-col">
             <div class="setting-item">
-                <label for="sfx-volume">🔊 SFX VOLUME</label>
+                <label for="sfx-volume"><span class="icon"><FaVolumeUp /></span> SFX VOLUME</label>
                 <input 
                     type="range" 
                     id="sfx-volume"
@@ -55,12 +62,12 @@
                 >
             </div>
             <div class="setting-item">
-                <span class="setting-label">✨ HIGH QUALITY</span>
+                <span class="setting-label"><span class="icon"><FaStar /></span> HIGH QUALITY</span>
                 <button type="button" class="toggle" class:on={$gameStore.settings.highQuality} aria-pressed={$gameStore.settings.highQuality}></button>
             </div>
             <div class="setting-item">
-                <span class="setting-label">👤 ACCOUNT</span>
-                <button type="button" class="neon-button secondary">🔗 LINK GOOGLE PLAY</button>
+                <span class="setting-label"><span class="icon"><FaUser /></span> ACCOUNT</span>
+                <button type="button" class="neon-button secondary"><span class="icon"><FaLink /></span> LINK GOOGLE PLAY</button>
             </div>
         </div>
     </div>
@@ -186,5 +193,24 @@
         height: 24px;
         object-fit: contain;
         vertical-align: middle;
+    }
+
+    .icon {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+        margin-right: 6px;
+        color: var(--neon-cyan);
+    }
+
+    .icon :global(svg) {
+        width: 100%;
+        height: 100%;
+        fill: currentColor;
+    }
+
+    .neon-button .icon {
+        margin-right: 8px;
     }
 </style>
