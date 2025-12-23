@@ -13,7 +13,7 @@
 </script>
 
 <div class="game-container">
-    <Canvas>
+    <Canvas rendererParameters={{ alpha: true, antialias: true }}>
         <Scene />
     </Canvas>
     
@@ -43,6 +43,11 @@
         width: 100vw;
         height: 100vh;
         position: relative;
+        background: transparent;
+    }
+
+    .game-container :global(canvas) {
+        background: transparent !important;
     }
 
     .screen-overlay {
