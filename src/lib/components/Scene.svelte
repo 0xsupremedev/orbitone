@@ -20,9 +20,9 @@
     
     
     let spaceshipRef;
-    let playerAngle = 0;
-    let targetAngle = 0;
-    let orbitRadius = 5;
+    let playerX = 0; // Horizontal position (-8 to 8)
+    let targetX = 0; // Target X position based on mouse
+    const playerZ = 6; // Fixed Z position at bottom of play area (moved up for visibility)
     let projectiles = [];
     let targets = [];
     let explosions = [];
@@ -55,19 +55,29 @@
         const outputPass = new OutputPass();
         composer.addPass(outputPass);
     };
+    // Laser sound effect
+    let laserSound;
+    
+    function initLaserSound() {
+        laserSound = new Audio('/sounds/laser.mp3');
+        laserSound.volume = 0.3;
+    }
 
     function shoot() {
         if (!$gameStore.isPlaying) return;
         
-        const px = Math.cos(playerAngle) * orbitRadius;
-        const pz = Math.sin(playerAngle) * orbitRadius;
-        // Fire forward (toward center) by reversing the angle
-        const fireAngle = playerAngle + Math.PI;
+        // Play laser sound
+        if (laserSound) {
+            laserSound.currentTime = 0;
+            laserSound.play().catch(() => {}); // Ignore autoplay errors
+        }
+        
+        // Fire upward (toward center) from horizontal position
         projectiles = [...projectiles, {
             id: Date.now(),
-            x: px,
-            z: pz,
-            angle: fireAngle,
+            x: playerX,
+            z: playerZ,
+            angle: -Math.PI / 2, // Fire upward (negative Z direction)
             speed: 25
         }];
     }
@@ -81,14 +91,14 @@
         }
         
         setupEffectComposer();
+        initLaserSound();
         
         const handleMouseMove = (e) => {
             mouseX = (e.clientX / window.innerWidth) * 2 - 1;
             mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
             
-            // Calculate angle from screen center to mouse position
-            // Map mouse position to orbital angle
-            targetAngle = Math.atan2(mouseX, mouseY);
+            // Map mouse X position to horizontal movement range (-8 to 8)
+            targetX = mouseX * 8;
         };
         
         const handleClick = (e) => {
@@ -138,13 +148,12 @@
             return;
         }
         
-        // Smooth angle interpolation - ship follows mouse
-        const angleDiff = targetAngle - playerAngle;
-        // Handle angle wrapping
-        let shortestAngle = ((angleDiff + Math.PI) % (Math.PI * 2)) - Math.PI;
-        if (shortestAngle < -Math.PI) shortestAngle += Math.PI * 2;
+        // Smooth horizontal interpolation - ship follows mouse X position
+        const xDiff = targetX - playerX;
+        playerX += xDiff * 8 * delta; // Smooth follow with spring-like movement
         
-        playerAngle += shortestAngle * 8 * delta; // Smooth follow with spring-like movement
+        // Clamp player position to bounds
+        playerX = Math.max(-8, Math.min(8, playerX));
         
         // Update projectiles
         projectiles = projectiles.map(p => ({
@@ -270,7 +279,7 @@
 <CentralStar />
 
 {#if $gameStore.isPlaying}
-    <Spaceship bind:ref={spaceshipRef} angle={playerAngle} radius={orbitRadius} />
+    <Spaceship bind:ref={spaceshipRef} x={playerX} z={playerZ} />
     
     {#each projectiles as projectile (projectile.id)}
         <Projectile x={projectile.x} z={projectile.z} angle={projectile.angle} />

@@ -4,8 +4,8 @@
     import { useGltf, useTexture } from '@threlte/extras';
 
     export let ref = new Group();
-    export let angle = 0;
-    export let radius = 5;
+    export let x = 0; // Horizontal position
+    export let z = 8; // Fixed Z position at bottom
 
     const gltf = useGltf('/models/spaceship.glb');
     const map = useTexture('/textures/energy-beam-opacity.png');
@@ -22,22 +22,21 @@
         alphaFix(model.materials.cockpit);
     });
 
-    $: x = Math.cos(angle) * radius;
-    $: z = Math.sin(angle) * radius;
-
     const component = forwardEventHandlers();
 </script>
 
 <T is={ref} dispose={false} bind:this={$component}>
-    <T.Group position={[x, 0, z]} rotation={[0, -angle + Math.PI, 0]}>
+    <!-- Position at x/z, facing upward (toward center/star) -->
+    <T.Group position={[x, 0, z]} rotation={[0, 0, 0]}>
         {#await gltf}
             <!-- Loading fallback -->
             <T.Mesh>
-                <T.ConeGeometry args={[0.3, 0.8, 8]} />
+                <T.ConeGeometry args={[0.5, 1.2, 8]} />
                 <T.MeshStandardMaterial color="#00f2ff" emissive="#00f2ff" emissiveIntensity={0.5} />
             </T.Mesh>
         {:then gltf}
-            <T.Group scale={0.0008} rotation={[0, Math.PI * 0.5, 0]} position={[0, 0, 0]}>
+            <!-- Scale set to 0.001 for smaller rocket size -->
+            <T.Group scale={0.001} rotation={[Math.PI, 0, 0]} position={[0, 0, 0]}>
                 <T.Mesh
                     castShadow
                     receiveShadow
